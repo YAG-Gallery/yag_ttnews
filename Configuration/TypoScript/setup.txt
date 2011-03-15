@@ -1,0 +1,30 @@
+plugin.tx_yagttnews {
+	view {
+		templateRootPath = {$plugin.tx_yagttnews.view.templateRootPath}
+		partialRootPath = {$plugin.tx_yagttnews.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_yagttnews.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_yagttnews.persistence.storagePid}
+	}
+}
+
+plugin.tx_yagttnews._CSS_DEFAULT_STYLE (
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-yagttnews-pi1 table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-yagttnews-pi1 table th {
+		font-weight:bold;
+	}
+
+	.tx-yagttnews-pi1 table td {
+		vertical-align:top;
+	}
+)
