@@ -3,7 +3,7 @@
 ########################################################################
 # Extension Manager/Repository config file for ext "yag_ttnews".
 #
-# Auto generated 15-03-2011 22:36
+# Auto generated 15-03-2011 22:43
 #
 # Manual updates:
 # Only the data in the array - everything else is removed by next
@@ -29,13 +29,13 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '0.1.0',
+	'version' => '0.1.1',
 	'constraints' => array(
 		'depends' => array(
 			'cms' => '',
 			'extbase' => '',
 			'fluid' => '',
-			'yag' => '1.0.7',
+			'yag' => '1.0.8',
 			'tt_news' => '',
 		),
 		'conflicts' => array(
