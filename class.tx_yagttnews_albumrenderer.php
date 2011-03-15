@@ -65,6 +65,15 @@ class tx_yagttnews_classes_albumrenderer {
      */
     protected $albumUid;
     
+    
+    
+    /**
+     * Holds YAG TS settings of this page
+     *
+     * @var array
+     */
+    protected $tsSettings;
+    
 	
 	
 	/**
@@ -152,11 +161,10 @@ class tx_yagttnews_classes_albumrenderer {
             } catch (Exception $e) {
                 if(!$this->getCurrentPid()) throw new Exception('Need PID for initialation - No PID given! 1298928835');
                     
-                $settings = $this->getTyposcriptSettings($this->getCurrentPid());
-                
-                Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::injectSettings($settings);
-                $this->configurationBuilder = Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance('backend', 'backend');
-                $this->typoScriptConfiguration = $settings;
+                $this->tsSettings = $this->getTyposcriptSettings($this->getCurrentPid());
+                Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::injectSettings($this->tsSettings);
+                // We set the theme here!
+                $this->configurationBuilder = Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance('backend', $this->tsSettings['theme']);
             }
         }
     }

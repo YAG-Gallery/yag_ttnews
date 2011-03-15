@@ -1,30 +1,44 @@
-plugin.tx_yagttnews {
-	view {
-		templateRootPath = {$plugin.tx_yagttnews.view.templateRootPath}
-		partialRootPath = {$plugin.tx_yagttnews.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_yagttnews.view.layoutRootPath}
-	}
-	persistence {
-		storagePid = {$plugin.tx_yagttnews.persistence.storagePid}
-	}
+####################################################
+# Setup for yag_ttnews
+# 
+# We use the lightbox theme, that ships with yag
+# here. Feel free to create your own theme.
+#
+# @author Daniel Lienert <daniel@lienert.cc> 
+# @author Michael Knoll <mimi@kaktusteam.de>
+# @package yag_ttnews
+# @subpackage Typoscript
+####################################################
+
+  # Create a theme for tt_news and copy from lightbox theme
+plugin.tx_yag.settings.themes.tt_news < plugin.tx_yag.settings.themes.lightbox
+
+  # Change some settings from lightbox theme
+plugin.tx_yag.settings.themes.tt_news {
+
+      # No gallery navigation please
+    showBreadcrumbs = 0
+    
+      # Hide pager
+    showPager = 0
+
+    itemList {
+          # We want to see all images
+        itemsPerPage = 0
+        
+          # We want to have only 1 column
+        columnCount = 1
+        
+          # We don't want a title to be rendered
+        showTitle = 0
+    }
+
 }
 
-plugin.tx_yagttnews._CSS_DEFAULT_STYLE (
-	input.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
 
-	.tx-yagttnews-pi1 table {
-		border-collapse:separate;
-		border-spacing:10px;
-	}
 
-	.tx-yagttnews-pi1 table th {
-		font-weight:bold;
-	}
-
-	.tx-yagttnews-pi1 table td {
-		vertical-align:top;
-	}
-)
+  # Overwrite some yag settings
+plugin.tx_yag.settings {
+      # Set theme to be used for gallery rendering
+    theme = tt_news
+}
