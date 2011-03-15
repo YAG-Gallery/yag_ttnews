@@ -6,6 +6,7 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
+		    <label index="tt_news.yag_album_uid">YAG Album UID</label>
 		</languageKey>
 	</data>
 </T3locallang>
