@@ -28,7 +28,12 @@
  * TCA Configuration for adding field to tt_news
  */
 if (!defined ('TYPO3_MODE'))    die ('Access denied.');
+
+require_once(t3lib_extMgm::extPath('yag').'Classes/Utility/Flexform/RecordSelector.php');
+require_once(t3lib_extMgm::extPath($_EXTKEY).'class.tx_yagttnews_albumselector.php');
+
 $tempColumns = Array (
+/*
     "tx_yagttnews_album_uid" => Array (        
         "exclude" => 1,     
         "label" => "LLL:EXT:yag_ttnews/Resources/Private/Language/locallang_db.xml:tt_news.yag_album_uid",      
@@ -37,13 +42,20 @@ $tempColumns = Array (
             "type" => "input",  
             "size" => "5"
         )
+    ),*/
+    'tx_yagttnews_album_uid' => Array (
+        'label' => 'LLL:EXT:yag_ttnews/Resources/Private/Language/locallang_db.xml:tt_news.yag_album_uid',
+        'config' => Array (
+            'type' => 'user',
+            'userFunc' => 'tx_yagttnews_albumselector->userAlbumSelectorRenderer',
+        )
     )
 );
 
 // Add field to tt_news
 t3lib_div::loadTCA("tt_news");
 t3lib_extMgm::addTCAcolumns("tt_news",$tempColumns,1);
-t3lib_extMgm::addToAllTCAtypes("tt_news","tx_yagttnews_album_uid;;;;1-1-1", '', 'after:image');
+t3lib_extMgm::addToAllTCAtypes("tt_news","tx_yagttnews_album_uid,TEST02;;;;1-1-1", '', 'after:image');
 
 
 
