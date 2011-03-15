@@ -129,7 +129,6 @@ class tx_yagttnews_classes_albumrenderer {
                 'ItemList' => array('list')
             )
         );
-        $this->configurationBuilder->buildAlbumConfiguration()->setSelectedAlbumUid($this->albumUid);
 		return $this->bootstrap->run('', $configuration);
 	}
 	
@@ -142,14 +141,12 @@ class tx_yagttnews_classes_albumrenderer {
      * @throws Exception
      */
     protected function initBootstrap() {
-
+        $configuration = array();
         $configuration['extensionName'] = self::EXTENSION_NAME;
         $configuration['pluginName'] = self::PLUGIN_NAME;
         
-        
         $this->bootstrap = t3lib_div::makeInstance('Tx_Extbase_Core_Bootstrap');
         $this->bootstrap->initialize($configuration);
-        
         
         if(!$this->configurationBuilder) {
             
@@ -157,16 +154,23 @@ class tx_yagttnews_classes_albumrenderer {
             
             try {
                 // try to get the instance from factory cache
-                $this->configurationBuilder = Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance('backend', 'backend');
+                $this->configurationBuilder = Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance($this->getContextIdentifier(), $this->tsSettings['theme']);
             } catch (Exception $e) {
                 if(!$this->getCurrentPid()) throw new Exception('Need PID for initialation - No PID given! 1298928835');
                     
                 $this->tsSettings = $this->getTyposcriptSettings($this->getCurrentPid());
                 Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::injectSettings($this->tsSettings);
                 // We set the theme here!
-                $this->configurationBuilder = Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance('backend', $this->tsSettings['theme']);
+                $this->configurationBuilder = Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance($this->getContextIdentifier(), $this->tsSettings['theme']);
+                // We do an ugly fake for setting contextIdentifier
             }
         }
+        $this->configurationBuilder->buildAlbumConfiguration()->setSelectedAlbumUid($this->albumUid);
+    }
+    
+    
+    protected function getContextIdentifier() {
+    	return 'tt_news_albumUid_' . $this->albumUid;
     }
     
     
