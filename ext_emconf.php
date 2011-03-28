@@ -3,7 +3,7 @@
 ########################################################################
 # Extension Manager/Repository config file for ext "yag_ttnews".
 #
-# Auto generated 15-03-2011 22:36
+# Auto generated 28-03-2011 09:16
 #
 # Manual updates:
 # Only the data in the array - everything else is removed by next
@@ -29,13 +29,13 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '0.1.0',
+	'version' => '0.1.2',
 	'constraints' => array(
 		'depends' => array(
 			'cms' => '',
 			'extbase' => '',
 			'fluid' => '',
-			'yag' => '1.0.7',
+			'yag' => '1.1.2',
 			'tt_news' => '',
 		),
 		'conflicts' => array(
@@ -45,7 +45,7 @@ $EM_CONF[$_EXTKEY] = array(
 	),
 	'suggests' => array(
 	),
-	'_md5_values_when_last_written' => 'a:10:{s:36:"class.tx_yagttnews_albumrenderer.php";s:4:"95ff";s:36:"class.tx_yagttnews_albumselector.php";s:4:"5091";s:12:"ext_icon.gif";s:4:"fef0";s:17:"ext_localconf.php";s:4:"2052";s:14:"ext_tables.php";s:4:"788e";s:14:"ext_tables.sql";s:4:"6187";s:38:"Configuration/TypoScript/constants.txt";s:4:"c0ac";s:34:"Configuration/TypoScript/setup.txt";s:4:"7f02";s:43:"Resources/Private/Language/locallang_db.xml";s:4:"9865";s:14:"doc/manual.sxw";s:4:"cfee";}',
+	'_md5_values_when_last_written' => 'a:10:{s:36:"class.tx_yagttnews_albumrenderer.php";s:4:"9d03";s:36:"class.tx_yagttnews_albumselector.php";s:4:"5091";s:12:"ext_icon.gif";s:4:"fef0";s:17:"ext_localconf.php";s:4:"2052";s:14:"ext_tables.php";s:4:"788e";s:14:"ext_tables.sql";s:4:"6187";s:38:"Configuration/TypoScript/constants.txt";s:4:"c0ac";s:34:"Configuration/TypoScript/setup.txt";s:4:"7f02";s:43:"Resources/Private/Language/locallang_db.xml";s:4:"9865";s:14:"doc/manual.sxw";s:4:"cfee";}',
 );
 
 ?>
