@@ -1,0 +1,19 @@
+{namespace yag=Tx_Yag_ViewHelpers}
+
+<f:if condition="{image.width} > {image.height}">
+	<div class="tx-yag-theme-ttnews-thumb tx-yag-theme-ttnews-thumb-landscape">
+</f:if>
+<f:if condition="{image.width} < {image.height}">
+	<div class="tx-yag-theme-ttnews-thumb tx-yag-theme-ttnews-thumb-portrait">
+</f:if>
+<f:if condition="{image.width} == {image.height}">
+	<div class="tx-yag-theme-ttnews-thumb tx-yag-theme-ttnews-thumb-square">
+</f:if>
+	<a href="{yag:resource.image(item: image, resolutionName: 'lightbox')}" 
+		class="fancybox" rel="fancybox[images_{image.album.uid}]" 
+		title="{image.title} <br /> {image.description}">
+		<yag:image item="{image}" resolutionName="thumb" alt="{image.title}"/></a>
+	<ul>
+		<li class="tx-yag-theme-ttnews-thumb-title">{image.title}</li>
+	</ul>
+</div>

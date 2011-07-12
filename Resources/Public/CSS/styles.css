@@ -1,0 +1,29 @@
+div.tx-yag-theme-ttnews-imagecontainer:after {
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+}
+div.tx-yag-theme-ttnews-imagecontainer {
+overflow: hidden;
+}
+div.tx-yag-theme-ttnews-thumb {
+float: left;
+border: 1px solid #DDD;
+background: #E4E4E4;
+margin: 2px;
+padding: 5px; }
+
+div.tx-yag-theme-ttnews-thumb ul {
+display: none;
+}
+
+div.tx-yag-theme-ttnews-thumb img {
+
+}
+div.tx-yag-theme-ttnews-thumb-landscape img {
+
+}
+div.tx-yag-theme-ttnews-thumb-portrait img {
+
+}

@@ -10,11 +10,45 @@
 # @subpackage Typoscript
 ####################################################
 
-  # Create a theme for tt_news and copy from lightbox theme
-plugin.tx_yag.settings.themes.tt_news < plugin.tx_yag.settings.themes.lightbox
+# Include CSS for this theme
+page.includeCSS.yagttnews = EXT:yag_ttnews/Resources/Public/CSS/styles.css
 
-  # Change some settings from lightbox theme
+  # Create a theme for tt_news and copy from lightbox theme
+plugin.tx_yag.settings.themes.tt_news < plugin.tx_yag.settings.themes.default
+
+  # Change some settings from default theme
 plugin.tx_yag.settings.themes.tt_news {
+	resolutionConfigs {
+		thumb {
+			maxH = 80
+			maxW = 132
+		}
+		lightbox {
+			maxH = 1000
+			maxW = 800
+		}
+	}
+	controller {
+		ItemList {
+			list.template = EXT:yag_ttnews/Resources/Private/Templates/ItemList/List.html
+			}
+		}
+	itemList {
+		imageThumbPartial = EXT:yag_ttnews/Resources/Private/Partials/ImageThumb.html
+		pagerPartial = EXT:yag_ttnews/Resources/Private/Partials/Pager.html
+		          
+		  # We want to see all images
+        itemsPerPage = 4
+        
+          # We want to have only 1 column
+        columnCount = 1
+        
+          # We don't want a title to be rendered
+        showTitle = 0
+		
+		  # We don't want a description to be rendered
+        showDescription = 0
+	}
 
       # No gallery navigation please
     showBreadcrumbs = 0
@@ -22,20 +56,7 @@ plugin.tx_yag.settings.themes.tt_news {
       # Hide pager
     showPager = 0
 
-    itemList {
-          # We want to see all images
-        itemsPerPage = 0
-        
-          # We want to have only 1 column
-        columnCount = 1
-        
-          # We don't want a title to be rendered
-        showTitle = 0
-    }
-
 }
-
-
 
   # Overwrite some yag settings
 plugin.tx_yag.settings {

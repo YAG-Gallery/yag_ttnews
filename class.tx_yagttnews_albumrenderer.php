@@ -165,7 +165,8 @@ class tx_yagttnews_classes_albumrenderer {
                 // We do an ugly fake for setting contextIdentifier
             }
         }
-        $this->configurationBuilder->buildAlbumConfiguration()->setSelectedAlbumUid($this->albumUid);
+        $this->configurationBuilder->buildContextConfiguration()->setSelectedalbumUid($this->albumUid);
+        
     }
     
     

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <T3locallang>
 	<meta type="array">
-		<type>database</type>
-		<description>Language labels for database tables/fields belonging to extension 'yag_ttnews'</description>
+		<type>module</type>
+		<description>Language labels for the YAG Theme Simpleviewer extension in the FRONTEND</description>
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-		    <label index="tt_news.yag_album_uid">YAG Album UID</label>
 		</languageKey>
 	</data>
 </T3locallang>
