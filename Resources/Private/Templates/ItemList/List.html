@@ -12,7 +12,7 @@
 
 	<f:if condition="{config.settings.itemList.showPager}">
 		<div class="tx-yag-pager">
-			<f:render partial="{config.settings.itemList.pagerPartial}" arguments="{action: 'list', controller: 'ItemList', pager: pager, pagerCollection: pagerCollection, itemsText: '{f:translate(key:\'tx_yag_domain_model_album.items\')}'}" />
+			<f:render partial="{config.itemListConfig.pagerPartial}" arguments="{action: 'list', controller: 'ItemList', pager: pager, pagerCollection: pagerCollection, itemsText: '{f:translate(key:\'tx_yag_domain_model_album.items\')}'}" />
 		</div>
     </f:if>
 </f:section>
