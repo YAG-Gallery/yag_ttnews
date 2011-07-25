@@ -182,7 +182,7 @@ class tx_yagttnews_classes_albumrenderer {
      * @param $pid
      */
     protected function getTyposcriptSettings($pid) {
-        $typoScript = tx_pttools_div::returnTyposcriptSetup($pid, 'plugin.tx_yag.settings.');
+        $typoScript = Tx_PtExtbase_Div::returnTyposcriptSetup($pid, 'plugin.tx_yag.settings.');
 
         if(!is_array($typoScript) || empty($typoScript)) {
             throw new Exception('No TypoScript configuration could be found for YAG. Make sure to include static templates for YAG! 1300206220');
