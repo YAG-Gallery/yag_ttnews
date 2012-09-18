@@ -34,11 +34,11 @@ require_once(t3lib_extMgm::extPath('yag').'Classes/Utility/Flexform/RecordSelect
 class tx_yagttnews_albumselector extends user_Tx_Yag_Utility_Flexform_RecordSelector {
 
 	public function userAlbumSelectorRenderer($PA, $fobj) {
-		
-		return $this->renderAlbumSelector($PA, $fobj);
-		
+
+		return $this->renderSourceSelector($PA, $fobj) . ' ' . $this->renderSelectedAlbum($PA, $fobj);
+
+
 	}
 	
 }
- 
 ?>
