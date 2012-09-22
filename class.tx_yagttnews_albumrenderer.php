@@ -203,5 +203,4 @@ class tx_yagttnews_classes_albumrenderer {
     }
 	
 }
-
 ?>
