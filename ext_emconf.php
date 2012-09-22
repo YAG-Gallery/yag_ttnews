@@ -15,7 +15,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'description' => 'YAG integration for tt_news. Enables inserting albums into news records.',
 	'category' => 'plugin',
 	'shy' => 0,
-	'version' => '0.2.0',
+	'version' => '0.3.0',
 	'dependencies' => 'cms,extbase,fluid,yag,tt_news',
 	'conflicts' => '',
 	'priority' => '',
@@ -37,7 +37,7 @@ $EM_CONF[$_EXTKEY] = array(
 			'cms' => '',
 			'extbase' => '',
 			'fluid' => '',
-			'yag' => '1.3.0',
+			'yag' => '1.5.2',
 			'tt_news' => '',
 		),
 		'conflicts' => array(
