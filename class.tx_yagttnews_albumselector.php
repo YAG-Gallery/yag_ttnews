@@ -68,6 +68,10 @@ class tx_yagttnews_albumselector extends user_Tx_Yag_Utility_Flexform_RecordSele
 		$galleryRepository = $this->objectManager->get('Tx_Yag_Domain_Repository_GalleryRepository'); /* @var $galleryRepository Tx_Yag_Domain_Repository_GalleryRepository */
 		$galleries = $galleryRepository->findAll();
 
+		echo 'COUNT:' . count($galleries);
+
+		$pages = $this->pidDetector->getPageRecords();
+
 		$selectedAlbumUid = intval($PA['row']['tx_yagttnews_album_uid']);
 
 		if($selectedAlbumUid) {
@@ -77,6 +81,7 @@ class tx_yagttnews_albumselector extends user_Tx_Yag_Utility_Flexform_RecordSele
 			$selectedGallery = $selectedAlbum->getGallery();
 
 			if($selectedAlbum) {
+				$renderer->assign('selectedPage', $selectedAlbum->getPid());
 				$renderer->assign('selectedAlbum', $selectedAlbum);
 				$renderer->assign('selectedGallery', $selectedGallery);
 				$renderer->assign('selectedGalleryUid', $selectedGallery->getUid());
@@ -86,6 +91,7 @@ class tx_yagttnews_albumselector extends user_Tx_Yag_Utility_Flexform_RecordSele
 			}
 		}
 
+		$renderer->assign('pages', $pages);
 		$renderer->assign('galleries', $galleries);
 		$renderer->assign('PA', $PA);
 
