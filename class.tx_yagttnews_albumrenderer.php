@@ -90,7 +90,7 @@ class tx_yagttnews_classes_albumrenderer {
 		$markerArray[self::TTNEWS_MARKER] = '';
 		$this->albumUid = $this->getAlbumUidFromRow($row);
 		if ($this->albumUid != 0) {
-			$markerArray[self::TTNEWS_MARKER] = $this->getRenderedAlbumStringByAlbumUid($this->albumUid);
+			$markerArray[self::TTNEWS_MARKER] = $this->getRenderedAlbumStringByAlbumUid();
 		}
 		return $markerArray;
 	}
@@ -115,10 +115,9 @@ class tx_yagttnews_classes_albumrenderer {
 	/**
 	 * Returns rendered html string for album
 	 *
-	 * @param int $albumUid
 	 * @return string Rendered album
 	 */
-	protected function getRenderedAlbumStringByAlbumUid($albumUid) {
+	protected function getRenderedAlbumStringByAlbumUid() {
 		$this->initBootstrap();
 		$configuration = array(
             'extensionName' => self::EXTENSION_NAME,
@@ -147,10 +146,10 @@ class tx_yagttnews_classes_albumrenderer {
         
         $this->bootstrap = t3lib_div::makeInstance('Tx_Extbase_Core_Bootstrap');
         $this->bootstrap->initialize($configuration);
-        
-        if(!$this->configurationBuilder) {
-            
-            $this->objectManager = t3lib_div::makeInstance('Tx_Extbase_Object_ObjectManager'); 
+
+		$this->objectManager = t3lib_div::makeInstance('Tx_Extbase_Object_ObjectManager');
+
+		if(!$this->configurationBuilder) {
             
             try {
                 // try to get the instance from factory cache
@@ -165,10 +164,31 @@ class tx_yagttnews_classes_albumrenderer {
                 // We do an ugly fake for setting contextIdentifier
             }
         }
+
         $this->configurationBuilder->buildContextConfiguration()->setSelectedalbumUid($this->albumUid);
-        
+		$this->initPidDetectorFromAlbumUid($this->albumUid);
     }
-    
+
+
+	/**
+	 * Loads the album of the given uid and retrieves the PID
+	 *
+	 * @param $albumUId
+	 */
+	protected function initPidDetectorFromAlbumUid($albumUId) {
+		$album = $this->objectManager->get('Tx_Yag_Domain_Repository_AlbumRepository')->findByUid($albumUId);
+
+		if($album instanceof Tx_Yag_Domain_Model_Album) {
+			$pid = $album->getPid();
+
+			$pidDetector = $this->objectManager->get('Tx_Yag_Utility_PidDetector'); /** @var Tx_Yag_Utility_PidDetector $pidDetector */
+			$pidDetector->setPids(array($pid));
+			$pidDetector->setMode(Tx_Yag_Utility_PidDetector::MANUAL_MODE);
+		}
+	}
+
+
+
     
     protected function getContextIdentifier() {
     	return 'tt_news_albumUid_' . $this->albumUid;

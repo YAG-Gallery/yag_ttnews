@@ -68,8 +68,6 @@ class tx_yagttnews_albumselector extends user_Tx_Yag_Utility_Flexform_RecordSele
 		$galleryRepository = $this->objectManager->get('Tx_Yag_Domain_Repository_GalleryRepository'); /* @var $galleryRepository Tx_Yag_Domain_Repository_GalleryRepository */
 		$galleries = $galleryRepository->findAll();
 
-		echo 'COUNT:' . count($galleries);
-
 		$pages = $this->pidDetector->getPageRecords();
 
 		$selectedAlbumUid = intval($PA['row']['tx_yagttnews_album_uid']);
