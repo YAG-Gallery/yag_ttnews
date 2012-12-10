@@ -1,14 +1,16 @@
 {namespace yag=Tx_Yag_ViewHelpers}
 <f:layout name="Default" />
 <f:section name="main">
-<div class="tx-yag-theme-ttnews-imagecontainer">
-	<f:for each="{listData}" key="rowIndex" as="listRow">
-		<f:render partial="{config.itemListConfig.imageThumbPartial}"
-			arguments="{config: config, image: listRow.image.value,
-				rowIndex: listRow.specialValues.absoluteRowIndex,
-				pager: pager, pagerCollection:pagerCollection}" />
-	</f:for>
-</div>
+    <yag:Javascript.template templatePath="EXT:yag/Resources/Private/JSTemplates/FancyBox.js" arguments="{yagSettings: '{yag:Javascript.JsonSettings(tsPath:\'fancybox\', onlyKeyValuePairs:1)}'}"/>
+
+    <div class="tx-yag-theme-ttnews-imagecontainer">
+        <f:for each="{listData}" key="rowIndex" as="listRow">
+            <f:render partial="{config.itemListConfig.imageThumbPartial}"
+                arguments="{config: config, image: listRow.image.value,
+                    rowIndex: listRow.specialValues.absoluteRowIndex,
+                    pager: pager, pagerCollection:pagerCollection}" />
+        </f:for>
+    </div>
 
 	<f:if condition="{config.settings.itemList.showPager}">
 		<div class="tx-yag-pager">

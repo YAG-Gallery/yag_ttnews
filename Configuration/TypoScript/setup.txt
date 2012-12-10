@@ -14,7 +14,7 @@
 page.includeCSS.yagttnews = EXT:yag_ttnews/Resources/Public/CSS/styles.css
 
   # Create a theme for tt_news and copy from lightbox theme
-plugin.tx_yag.settings.themes.tt_news < plugin.tx_yag.settings.themes.default
+plugin.tx_yag.settings.themes.tt_news < plugin.tx_yag.settings.themes.lightbox
 
   # Change some settings from default theme
 plugin.tx_yag.settings.themes.tt_news {
