@@ -119,6 +119,7 @@ class tx_yagttnews_classes_albumrenderer {
 	 */
 	protected function getRenderedAlbumStringByAlbumUid() {
 		$this->initBootstrap();
+
 		$configuration = array(
             'extensionName' => self::EXTENSION_NAME,
             'pluginName' => self::PLUGIN_NAME,
@@ -126,8 +127,15 @@ class tx_yagttnews_classes_albumrenderer {
             'action' => 'lists',
             'switchableControllerActions' => array(
                 'ItemList' => array('list')
-            )
+            ),
+			'settings' => array(
+				'context' => array(
+					'selectedAlbumUid' => $this->albumUid
+				),
+				'contextIdentifier' => $this->getContextIdentifier()
+			)
         );
+
 		return $this->bootstrap->run('', $configuration);
 	}
 	
