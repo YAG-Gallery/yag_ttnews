@@ -216,7 +216,7 @@ class tx_yagttnews_classes_albumrenderer {
             throw new Exception('No TypoScript configuration could be found for YAG. Make sure to include static templates for YAG! 1300206220');
         }
         
-        return  Tx_Extbase_Utility_TypoScript::convertTypoScriptArrayToPlainArray($typoScript);
+        return  Tx_PtExtbase_Compatibility_Extbase_Service_TypoScript::convertTypoScriptArrayToPlainArray($typoScript);
     } 
 
     
